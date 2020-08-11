@@ -56,7 +56,7 @@
 	- __Minimo de RU/s:__ 400 - max: 250.000, se precisar de mais precisar abrir ticket no portal
 	- Data consistency: níveis de consistência robusta consomem aproximadamente 2x mais RUs 
 	- __Query Patterns:__ garantia de que uma mesma query, com os mesmos dados, sempre custam o mesmo número de RU/s;
-- __Partitioning:__
+-#### __Partitioning:__
 	- Logical and Physical;
 	- Uma partição física é implementada por um grupo de réplicas, chamado de Replica Set.
 	- Replica set: replicas dentro da mesma região;
@@ -75,7 +75,7 @@
 - O código HTTP 429 indica que há um número excessivo de solicitações. 
 	- Ao adicionar uma região nova, o azure garante disponibilização em 30 minutos (até 100TB) 
 - Multi-Mater Support
-- __Conflict Resolution:__ 
+-#### __Conflict Resolution:__ 
 	- Last-Writer-Wins (LWW)
 	- Custom-User-Defined functions
 	- Custom-Async: cosmos excludes all conflicts from being commited 
@@ -86,11 +86,11 @@
   Aplicável somente a uma cnta de gravação de região única.
 - Falha na região de leitura: automaticamente desconectada. Redirecionamento para outra na lista de preferenciais. 
 - Falha na Região de Escrita: marcada como offline. Região alternativa promovida a região de gravação.
-- __Monitoring:__
+-### __Monitoring:__
 	- Performance metrics on the metrics page;
 	- Performance metrics using Azure Monitoring;
 	- Performance Metrics on the Account Page - Total requests for the current day; storage used;
-- __Pricing:__ 
+-### __Pricing:__ 
 	- Taxa de Transferência (padrão ou dimensionamento automático);
 	- Armazenamento consumido por hora (Duas cópias de backup são fornecidas gratuitamente, com cópias adicionais cobradas como 
 		o total de GBs de dados armazenados.); 
