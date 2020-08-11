@@ -1,4 +1,4 @@
-#### Azure Data Warehouse Synapses Analytics
+## Azure Data Warehouse Synapses Analytics
 - Escala Ilimitada;
 - Query with __MPP__: Massive Parallel Process;
 - Run Complex Queries;
@@ -107,3 +107,17 @@ _ __Table Geometries:__
   - Polybase: allows for SQL DW to also be ETL
   - Databricks: também pode ser usado para transformação
 - __Data Analysis Service:__ inserts the semantic layer between the end business user and the DW. Becomes an entrypoint that allows business users to create reports and dashboards without the need for complex joins or databases queries. Also adds a layers of data security, allowing only portions of the data to become exposed to the end user;
+
+### __PolyBase__
+  - Mais fácil e escalável;
+  - Acessa dados externos armazenados no Blob, hadoop ou Data Lake, via T-SQL;
+  - Extraia em TXT, carregue no Blob, Hadoop ou Data Lake;
+  - Importe o dado no SQL DW staging tables
+  - Transforme o dado;
+  - Insira nas tabelas de Prod;
+  - __Formatos:__
+    - CSV, UTF-8 ou 16
+    - Hadoop: rc files, ORC, Parquet
+    - gzip and anppy compressed;
+  - Storage Key para autenticar;
+  - Statistics to improve query performance
