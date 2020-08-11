@@ -11,7 +11,7 @@
 - Analytics in massive scale;
 - Comparado com o DWs Tradicionais, leva frações de segundo para finalizar consultas;
 - T-SQL - Batch, streaming and interactive processing of data
-- ###__sql Pools using DW Units__
+- ### __SQL Pools using DW Units:__
   - CPU, Memory and IO are boundled into units of compute scale called SQL pool;
   - SQL Pool = Medida de recursos computacionais
     - O tamanho é determinado por DW Units (DWU);
@@ -25,9 +25,9 @@
   - Aumente ou diminua o poder computacional sem mover os dados;
   - Pause a capacidade computacional e pague apenas pelo armazenamento;
   - Continue com a capacidade computacional durante as horas operacionais;
-  - __Control Node:__ manage de parallel processing engine and optimizes the query by passing it through or distributing to multiples compute nodes. Após o processamento, o dado volta para o control node e é entregue ao usuário;
-    - Os nodes trabalham em paralelo para acessar a storage e rodar a query
-    - __Data Movement Service__: (between the computer nodes) this moves the datas across the nodes as needed;
+- __Control Node:__ manage de parallel processing engine and optimizes the query by passing it through or distributing to multiples compute nodes. Após o processamento, o dado volta para o control node e é entregue ao usuário;
+  - Os nodes trabalham em paralelo para acessar a storage e rodar a query
+  - __Data Movement Service__: (between the computer nodes) this moves the datas across the nodes as needed;
 - __The Law of 60__
   - At lowest level, which is 100 dw units, there is one computer node and 60 different distributions that are broken out for that one node.
   - 1000 dw units 10 compute nodes 6 distributions per node 
