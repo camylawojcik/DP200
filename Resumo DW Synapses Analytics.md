@@ -54,17 +54,55 @@
 - ColumnStore Ordenado;
 - Mascara de dados dinâmicos;
 - Segurança em nível de linha;
-- __Control Node:__ manage de parallel processing engine and optimizes the query by passing it through or distributing to multiples compute nodes. Após o processamento, o dado volta para o control node e é entregue ao usuário;
-  - Os nodes trabalham em paralelo para acessar a storage e rodar a query
-  - __Data Movement Service__: (between the computer nodes) this moves the datas across the nodes as needed;
+### __MPP__
+  Possibilita escalar computing power sem interferir na storage
+  - Isso é feito abstraindo CPU, Memória e i/o, agrupando-os em Units of Compute Scale: *SQL POOL*
+  - Alterando o nivel de serviço, você altera o número de DWUs que estão alocados, o que ajusta a performance e o custo;
+  - ### Node-based Architecture:
+    - App conectam a um nó de controle e emitem comandos T-SQL para ele, que é o ponto único de entrada do DW;
+    - O nó de controle executa o mecanismo do MPP e passa para os nós de computação executarem em paralelo
+    - Os nós de pc. armazenam os dados de usuário no Azure Storage e executam as consultas paralelas.
+    - O Data Movement Service (DMS) move os dados pelos nós conforme necessário para executar consultas em paralelo e retornar resultados precisos.
+  - __Control Node:__ manage de parallel processing engine and optimizes the query by passing it through or distributing to multiples compute nodes. Após o processamento, o dado volta para o control node e é entregue ao usuário;
+    - Os nodes trabalham em paralelo para acessar a storage e rodar a query
+    - O MPP é executo nele para otimizar e coordenar as consultas paralelas;
+  - __Computing Nodes:__  fornecem capacidade de computação.
+    - Conforme vc paga para obter mais nós de computing, o SQL DW mapeia novamente as distribuições;
+    - O número de intervalo de nós é de 1 a 60 e é determinado pelo nível de serviço para o DW;
+  - __Data Movement Service__: Coordena a movimentação dos dados entre os nós de computação. 
+    - Quando o DW executa a consulta, o trabalho é dividido em 60 consultas menores que são executadas em paralelo
+    - Cada consulta é executada em uma distribuição
+    - Uma distribuição é uma unidade básica de armazenamento e processamento para consultas paralelas.
+    - Algumas consultas necessitam da movimentação de dados entre nós para que o resultado seja preciso. O DSM garante isso;
 - __The Law of 60__
   - At lowest level, which is 100 dw units, there is one computer node and 60 different distributions that are broken out for that one node.
   - 1000 dw units 10 compute nodes 6 distributions per node 
   - 6000 compute units 60 compute nodes 1 distribution per node
 - __Sharding patterns__: type of horizontal partitioning that splits large databases into smaller components to make it easy to manage. Is needed when the data set is top big to be stored in a single database;
-  - __Hash:__ highest query performance for joins and aggregations on large tables 
-  - __Round Robin:__ Recommended when use a stage table for loads
-  - __Replicate:__ fast query performance for small tables
+_ __Table Geometries:__
+  - Os dados são fragmentados em distribuições para otimizar o desempenho do sistema.
+  - Tipos de Fragmentação:
+    - __Hash:__
+      - Indicado: Fatos e dimensões grandes;
+      - Não indicado: Se a chave de distribuição não pode ser utilizada;
+      - Uma função hash é determinada como coluna de distribuição;
+    - __Round Robin:__ 
+      - Indicado: Tabela de Staing/Temporária;
+      - Quando não tem chave de ligação óbvia ou uma boa coluna candidata;
+      - Não adequado: se a performance for lenta durante a movimentação dos dados;
+      - Distribui os dados uniformemente entre os nós, mas sem qualquer otimização adicional;
+      - Uma distribuição é escolhida de maneira aleatória e em seguida, buffers de linha são atribuídos a distribuições em sequência;
+      - Carga rápida; Consulta mais lenta que hash;
+    - __Replicate:__
+      - Adequado: dimensões pequenas, star schema, com menos de 2gb após compactação;
+      - Não indicado: para muitas transações, muitas alterações de DWU; tabelas com muitas colunas, mas com poucas usadas; Se você indexar uma tabela replicada;
+      - Faz cache de uma cópia em cada nó;
+      - Elimina a necessidade de transferir dados entre nós;    
+    - __Replicate:__ fast query performance for small tables
+  Comece com a distribuição Round Robin, mas almeje a Hash para aproveitar uma arquitetura paralela massiva.
+  - Não distribua o formato varchar;
+  - Use sys.dm_pwd_request_steps para analisar as movimentações por trás das consultas e examinar a melhor estratégia de distribuição;
+  - Gen1 e Gen2 podem contar com 60 nós de computação atribuidos para processar dados quando o número máximo de DWu está selecionado. Gen2 tem 5x a capacidade de computação e 4x mais consultas simultaneas que o Gen1.
 - __ETL/ELT:__
   - Polybase: allows for SQL DW to also be ETL
   - Databricks: também pode ser usado para transformação
