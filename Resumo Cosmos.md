@@ -4,13 +4,13 @@
 	- Uma collection contém documentos 
 	- Um documento é um conjunto não estruturado de pares chave-valor, lidos e gravados em formato JSON;
 - Globally distributed, multi-moldel database
-- ##### You can deploy using:
+- #### You can deploy using:
 	- SQL API (default, doc. db, non fixed API)
 	- Mongo DB API (data and document)
 	- Cassandra API
 	- Gremlin API (define relationships or graph based view of data)
 	- Table API (support fpr application, high availability and global distribution)
-- ##### Quando usar:
+- #### Quando usar:
 	- Quando precisar de um banco de dados NoSQL; 
 	- Compativel com modelo de API;
 	- Escala Mundial
@@ -19,10 +19,9 @@
 - Failover regional
 - Multimaster replication: obter tempo de resposta < 1s em qualquer lugar do mundo
 - Leituras e gravações < 10ms
-- #### __Níveis de Consistência:__ 
+- ### __Níveis de Consistência:__ 
     73% dos cosmos tenant usam session consistency e 20% preferem bounded staleness
-	- Strong:
-	- Garante a leitura a versão mais recente de um item. Escrita vísivel apenas após o commit. Dado recplicado através de todos os nodes, quase simultaneamente; Custo da leitura é maior que no session, e igual ao staleness;
+	- Strong: Garante a leitura a versão mais recente de um item. Escrita vísivel apenas após o commit. Dado recplicado através de todos os nodes, quase simultaneamente; Custo da leitura é maior que no session, e igual ao staleness;
 	- Bounded Staleness: prefixos consistentes. Reads lag behind writes by at most k prefixes or t interval;
 	- Session: prefixos consistentes. Monotonic reads, monotonic writes, read-your-writes, write-follows-reads. Scoped to a client session. Predictable consistency for a session
 	- Consistent prefix: updates returned are some prefix of all the updates, with no gaps.
@@ -35,7 +34,7 @@
 	- IP Firewall configurations and access from virtual networks;
 	- Autenticação baseada em TOKEN;
 	- AD provides role-based security;
-- #### __Indexing:__
+- ### __Indexing:__
 	- é automático mais pode ser sobreescrito;
 	- Cada container tem uma politica que diz como os itens devem ser indexados;
 	- Default: Consistent. (Toda propriedade de todos os itens é indexada e o indice tem atualização
@@ -44,7 +43,7 @@
 	- None: Sem indice. As consultas são mais caras. Se estiver lendo dados diretamente, em vez de consultar a coleção, é possível evitar a sobrecarga da indexação;
 	- Many as 20 failed domains
 - Very elastic, horizontal scalability;
-- #### __Throughput:__ 
+- ### __Throughput:__ 
     Is the amount of material or items passing through a system or process;
 	- In cosmos, is the database operations. The cost is expressed by request units or hour use;
 	- Distribuido igualmente entre todas as partições fisicas;
