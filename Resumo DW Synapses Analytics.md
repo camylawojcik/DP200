@@ -18,9 +18,13 @@
     - + performace + DWU
     - Storage and compute costs são bilados separadamente
       - Mudar a quantidade de DWUs não afeta o custo de storage;
-
-
-
+- __Vantagens:__
+  - Ingestão de várias fontes;
+  - Scale-out to distribute computational processing of data across a large cluster of nodes;
+  - Poder computacional independente de storage;
+  - Aumente ou diminua o poder computacional sem mover os dados;
+  - Pause a capacidade computacional e pague apenas pelo armazenamento;
+  - Continue com a capacidade computacional durante as horas operacionais;
   - __Control Node:__ manage de parallel processing engine and optimizes the query by passing it through or distributing to multiples compute nodes. Após o processamento, o dado volta para o control node e é entregue ao usuário;
     - Os nodes trabalham em paralelo para acessar a storage e rodar a query
     - __Data Movement Service__: (between the computer nodes) this moves the datas across the nodes as needed;
