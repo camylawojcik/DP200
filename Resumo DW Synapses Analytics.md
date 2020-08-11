@@ -1,7 +1,38 @@
 #### Azure Data Warehouse Synapses Analytics
-- __MPP__: Massive Parallel Process
-- Run Complex Queries
+- Escala Ilimitada;
+- Query with __MPP__: Massive Parallel Process;
+- Run Complex Queries;
+- Ambiente Unificado combinando o data warehouse empresarial do SQL, às funcionalidades de análise de Big Data do Spark;
+- SQL Analytics and SQL Pools: Modern Data Warehouse;
 - Arquitetura que distribui o processamento em vários nodes;
+- Relational Tables with columnar storage:
+  - Menor custo de storage;
+  - Mais performance;
+- Analytics in massive scale;
+- Comparado com o DWs Tradicionais, leva frações de segundo para finalizar consultas;
+- T-SQL - Batch, streaming and interactive processing of data
+- ###__sql Pools using DW Units__
+  - CPU, Memory and IO are boundled into units of compute scale called SQL pool;
+  - SQL Pool = Medida de recursos computacionais
+    - O tamanho é determinado por DW Units (DWU);
+    - + performace + DWU
+    - Storage and compute costs são bilados separadamente
+      - Mudar a quantidade de DWUs não afeta o custo de storage;
+
+
+
   - __Control Node:__ manage de parallel processing engine and optimizes the query by passing it through or distributing to multiples compute nodes. Após o processamento, o dado volta para o control node e é entregue ao usuário;
     - Os nodes trabalham em paralelo para acessar a storage e rodar a query
     - __Data Movement Service__: (between the computer nodes) this moves the datas across the nodes as needed;
+- __The Law of 60__
+  - At lowest level, which is 100 dw units, there is one computer node and 60 different distributions that are broken out for that one node.
+  - 1000 dw units 10 compute nodes 6 distributions per node 
+  - 6000 compute units 60 compute nodes 1 distribution per node
+- __Sharding patterns__: type of horizontal partitioning that splits large databases into smaller components to make it easy to manage. Is needed when the data set is top big to be stored in a single database;
+  - __Hash:__ highest query performance for joins and aggregations on large tables 
+  - __Round Robin:__ Recommended when use a stage table for loads
+  - __Replicate:__ fast query performance for small tables
+- __ETL/ELT:__
+  - Polybase: allows for SQL DW to also be ETL
+  - Databricks: também pode ser usado para transformação
+- __Data Analysis Service:__ inserts the semantic layer between the end business user and the DW. Becomes an entrypoint that allows business users to create reports and dashboards without the need for complex joins or databases queries. Also adds a layers of data security, allowing only portions of the data to become exposed to the end user;
