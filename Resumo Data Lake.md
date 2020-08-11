@@ -1,9 +1,9 @@
 ### __AZURE DATA LAKE STORAGE__
 Projetado para volume de dados em escala de exabytes, manipulando centenas de GB de taxa de transferência
 - Tempo real ou lote;
-- Gen2: armazena no blob, com acesso pela api do blob ou do Data Lake;
+- __Gen2:__ armazena no blob, com acesso pela api do blob ou do Data Lake;
 	- query by Azure Blob Storage API ou the Azure Data Lake System API
-- Gen1: também pode atuar como camada de armazenamento para várias plataformas
+- __Gen1:__ também pode atuar como camada de armazenamento para várias plataformas
     - query by using U-SQL
 - __Onde usar:__ grandes quantidades de dados; reduz tempo de processamento, tornando a pesquisa mais rápida;
 - Escalabilidade ilimitada, compativel com Hadoop, 
@@ -30,10 +30,10 @@ Projetado para volume de dados em escala de exabytes, manipulando centenas de GB
 		  account can be configured to provide more throughput by contacting Azure Support.
 	- Otimizado para Big Data Analytics
 - __Zone and Geo Redundant (LRS) (GRS)__
-- Hierarchical Namespaces: 
+- __Hierarchical Namespaces:__ 
 	- organiza o blob em diretórios e armazena metadados sobre cada diretório e arquivos. Permitindo renomear e deletar em uma única operação atômica;
 	- (desabiltar a opção de hierarchical namespace se não for executar operações analíticas)
-- Stages:
+- __Stages:__
 	- Ingestion, Store, Prep and Train, Model and Serve;
 - __Storage Account Keys:__
   - Chave inserida no cabeçalho http
