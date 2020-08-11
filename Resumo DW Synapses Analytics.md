@@ -108,6 +108,39 @@ _ __Table Geometries:__
   - Databricks: também pode ser usado para transformação
 - __Data Analysis Service:__ inserts the semantic layer between the end business user and the DW. Becomes an entrypoint that allows business users to create reports and dashboards without the need for complex joins or databases queries. Also adds a layers of data security, allowing only portions of the data to become exposed to the end user;
 
+### __Optimize__
+- Advisor Recommendations
+- Use o Polybase para load e export (creat table as select);
+- Hash Distribute large tables
+  - Choose the correct distribution types
+-Remember the rule of 60;
+- Don't over partition
+  - Maximize throughput by breaking gzip into 60+ files
+- Shrink it down;
+  - Minimize transction size;
+  - Minimize column sizes;
+  
+### Monitoring in SQL Database and SQL Data Warehouse
+  - Provide tools and methods to monitor usage
+  - Add or remove resources (CPU, memory, I/O)
+  - Troubleshoot potential issues
+  - leverage recommendations to improve performance
+
+  - Key metrics to be monitored
+    - CPU usage
+    - Wait statistics - why are queries waiting	 on resources?
+    - I/O usage - I/O limits of underlying storage
+    - Memory usage - memory available proportional to vCore number
+    - Azure SQL Database includes tools and resources needed to monitor, troubleshoot, and fix potential performance issues
+  - The tools:
+    - Metrics chart - for DTU consumption and resources approaching max utilization
+    - SQL Server Management Studio - Performance dashboard to monitor top resource-consuming queries (sql developer)
+   -Query Performance Insight - identify queries that spend the most resources (Single and Elastic)
+    - SQL Database Advisor - View recommendations for creating and dropping indexes, parameterizing queries, and fixing schema issues
+    - Azure SQL Intelligence Insights - automatic monitoring of database performance
+
+  
+
 ### __PolyBase__
   - Mais fácil e escalável;
   - Acessa dados externos armazenados no Blob, hadoop ou Data Lake, via T-SQL;
@@ -115,6 +148,17 @@ _ __Table Geometries:__
   - Importe o dado no SQL DW staging tables
   - Transforme o dado;
   - Insira nas tabelas de Prod;
+ - #### PolyBase Architecture 
+  - Head Node: SQL Server instances que o PolyBase usa para fazer as consultas(Cada     PolyBase group tem apenas um Head Node)
+    - Sql Server
+    - Poly Base Engine
+    - PolyBase DMS - Data Movement Service
+  - Compute Node - pode conter vários, 
+    - SQL Server instance
+    - Logical group of sql server instances and PolyBase DMS
+    - Permitem multiplos nodes que processam e movem os dados através do sistema
+  - O melhor jeito de mover os dados para tabelas externas é conhecido com CTAS - CREATE TABEL AS SELECT
+
   - __Formatos:__
     - CSV, UTF-8 ou 16
     - Hadoop: rc files, ORC, Parquet
