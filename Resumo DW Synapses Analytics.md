@@ -25,6 +25,35 @@
   - Aumente ou diminua o poder computacional sem mover os dados;
   - Pause a capacidade computacional e pague apenas pelo armazenamento;
   - Continue com a capacidade computacional durante as horas operacionais;
+  
+- __Recursos:__
+  - Gerenciamento de carga de trabalho;
+    - Capacidade de priorizar cargas de trabalho de consulta que ocorrem no servidor, através de 3 áreas relacionadas:
+      - Grupos de Carga de Trabalho:
+        - Possibilita reservar recursos para determinados grupos
+        - Limita a quantidade de recurso que pode ser consumida
+        - Recursos compatilhados acessados com base no nível de importância;
+        - Definir o tempo limite de uma consulta
+        - Grupo criado usando o T-SQL;
+      - Classificação da Carga de Trabalho:
+        - Usando o T-SQL você pode criar um classificador para definir a importância de uma solicitação;
+      - Importância da Carga de Trabalho:
+        - Comando CREATE WORKLOAD CLASSIFIER
+        - Consultas com prioridade mais alta recebem recursos antes;
+        - A fila é FIFO e a medida que os recursos são liberados é respeitada a prioridade;
+      - Cache do Conjunto de Resultados:
+        - Os resultados das consultas são armezados no Pool SQL;
+        - Tempo de resposta interativo para consultas repetidas;
+        - O cache é removido com base no TLRU;
+        - Você pode definir o cache no nível de banco ou de sessão;
+      - Exibição Materializadas:
+        - Pré computa os resultados e armazena;
+        - Atualizado automaticamente quando os dados das tabelas subjacentes forem alterados (operação sincrona);
+        - Essa funcionalidade de cache automático permite que o otimizador de consulta considere o uso de uma view indexada mesmo quando ela não é referenciada na consulta;
+- Suporte a CI/CD;
+- ColumnStore Ordenado;
+- Mascara de dados dinâmicos;
+- Segurança em nível de linha;
 - __Control Node:__ manage de parallel processing engine and optimizes the query by passing it through or distributing to multiples compute nodes. Após o processamento, o dado volta para o control node e é entregue ao usuário;
   - Os nodes trabalham em paralelo para acessar a storage e rodar a query
   - __Data Movement Service__: (between the computer nodes) this moves the datas across the nodes as needed;
