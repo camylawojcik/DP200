@@ -3,10 +3,39 @@
   Integra seus aplicativos e dispositivos IoT a um mecanismo de análise por streaming para obter insights com os dados de streaming em tempo real.
   - Detecta problemas ou reconhece e os responde;
   - Reconhece o comportamento sob diversas condições para impulsionar ainda mais aprimoramentos de tal componente ou sistema;
-  - Disparar ações especifícas
+  - Disparar ações especifícas;
+  - Existem 2 tipos de processamento:
+    - Dados Streaming podem ser coletados em tempo real e persistido em um storage como um dado estático. O dado pode ser processado quando conveniente ou quando o custo for mais baixo;
+    - Live data Streams tem uma necessidade de storage relativamente mais baixas. Requisitam mais processamento para executar calculos em janelas deslizantes sobre os dados continuamente recebidos para gerar insights;
   - A piece in the puzzle: não é uma ferramenta que faz tudo.
   - When Use: 
     Respond to data in real time or analyze large batches of data in a continous time-bound stream.
+- __Event Processing__
+É o processo de consumir os dados, analisar e entregar os insights.
+  - __Event Producer__: ex: sensores ou processos que geram dados continuamente (monitor cardiaco);
+  - __Event Process__: Engine que consome os dados do stream e entrega insights. Pode processar um evento por vez, ou vários (ex: pedágio)
+  - __Event Consumer__: Aplicação que consome dados e toma ações específicas baseadas nos insights;
+- __Process Events with Azure Stream Analytics__
+  - Event Producer
+  - Event Ingest System: Obtém o dado do sistema fonte e passa por uma Analytics engine 
+  - Stream Analytics Engine: o processamento é executado sob o fluxo de dados recebidos e as infos são extraídas. O stream Analytics expõem a linguagem de consulta SAQL, um conjunto do Transact-SQL personalizado para executar calculos sobre os dados de streaming;
+  - Event Consumer: Destino da saída do stream analytics engine (Data Lake, Cosmos, SQL DB, Blob ou PBI)
+- Garante o processamento e entrega de pelo menos um evento, para que eventos não sejam perdidos. Possui recursos de recuperação internos.
+- Fornece pontos de verificação interno (built-in checkpoint) para produzir reusltados repetíveis;
+- Permite in-memory compute, oferecendo performance superior. Contribuindo para um custo mais baixo.
+- __Understand the Streaming Analytics__
+  - A job is a unit of execution
+  - Um pipeline consiste em 3 partes:
+    - Input: uma fonte
+    - Transformation query: ação sobre o input
+    - Output: identifica o destino da saída do dado transformado;
+  - Logs:Stream Analytics Log provides details about each job you rub.
+    - Dashboards: mostram métricas chaves para o Stream Analytics Jobs;
+    - Diagnostic Logs: parte chave da infra estrutura operacional. Ajuda a encontrar a causa raiz dos problemas de deploy em produção;
+      - Desabilitado por default;
+    - 
+    
+    
   - Data Ingestion:
     By configuring data inputs from first-class integration sources, these sources include:
     - __Event Hubs, Azure IOT Hub and Azure Blob__
