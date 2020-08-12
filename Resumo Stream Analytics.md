@@ -29,7 +29,7 @@
 - Garante o processamento e entrega de pelo menos um evento, para que eventos não sejam perdidos. Possui recursos de recuperação internos.
 - Fornece pontos de verificação interno (built-in checkpoint) para produzir reusltados repetíveis;
 - Permite in-memory compute, oferecendo performance superior. Contribuindo para um custo mais baixo.
-- __Understand the Streaming Analytics__
+- ### __Understand the Streaming Analytics__
   - A job is a unit of execution
   - Um pipeline consiste em 3 partes:
     - __Input:__ uma fonte
