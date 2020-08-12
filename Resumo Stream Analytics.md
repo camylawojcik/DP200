@@ -10,15 +10,16 @@
   - A piece in the puzzle: não é uma ferramenta que faz tudo.
   - When Use: 
     Respond to data in real time or analyze large batches of data in a continous time-bound stream.
-- __Event Processing__
-É o processo de consumir os dados, analisar e entregar os insights.
-  - __Event Producer__: ex: sensores ou processos que geram dados continuamente (monitor cardiaco);
-  - __Event Process__: Engine que consome os dados do stream e entrega insights. Pode processar um evento por vez, ou vários (ex: pedágio)
-  - __Event Consumer__: Aplicação que consome dados e toma ações específicas baseadas nos insights;
 - __Process Events with Azure Stream Analytics__
-  - Event Producer
-  - Event Ingest System: Obtém o dado do sistema fonte e passa por uma Analytics engine 
-  - Stream Analytics Engine: o processamento é executado sob o fluxo de dados recebidos e as infos são extraídas. O stream Analytics expõem a linguagem de consulta SAQL, um conjunto do Transact-SQL personalizado para executar calculos sobre os dados de streaming;
+  - __Event Producer__:ex: sensores ou processos que geram dados continuamente (monitor cardiaco);
+  - __Event Ingest System:__ Obtém o dado do sistema fonte e passa por uma Analytics engine 
+  - __Stream Analytics Engine__: o processamento é executado sob o fluxo de dados recebidos e as infos são extraídas. O stream Analytics expõem a linguagem de consulta SAQL, um conjunto do Transact-SQL personalizado para executar calculos sobre os dados de streaming;
+    - __Event Process__: Engine que consome os dados do stream e entrega insights. Pode processar um evento por vez, ou vários (ex: pedágio)
+  - __Event Consumer__: Aplicação que consome dados e toma ações específicas baseadas nos insights;
+###- __Data Processing__
+  Set up jobs with input and output pipelines.
+    - Inputs are provided by Events Hubs, IoT Hubs or Azure Storage. The output can be route to many storage systems. Include Blob, SQL Database, Data Lake Storage, and cosmos DB.
+    - After Stored, batch analytics in HdInsight, or send the output to a service like Event Hubs for consumption. Or PBI Streaming API.
   - Event Consumer: Destino da saída do stream analytics engine (Data Lake, Cosmos, SQL DB, Blob ou PBI)
 - Garante o processamento e entrega de pelo menos um evento, para que eventos não sejam perdidos. Possui recursos de recuperação internos.
 - Fornece pontos de verificação interno (built-in checkpoint) para produzir reusltados repetíveis;
@@ -26,25 +27,19 @@
 - __Understand the Streaming Analytics__
   - A job is a unit of execution
   - Um pipeline consiste em 3 partes:
-    - Input: uma fonte
-    - Transformation query: ação sobre o input
-    - Output: identifica o destino da saída do dado transformado;
-  - Logs:Stream Analytics Log provides details about each job you rub.
-    - Dashboards: mostram métricas chaves para o Stream Analytics Jobs;
-    - Diagnostic Logs: parte chave da infra estrutura operacional. Ajuda a encontrar a causa raiz dos problemas de deploy em produção;
+    - __Input:__ uma fonte
+    - __Transformation query:__ ação sobre o input
+    - __Output:__ identifica o destino da saída do dado transformado;
+  - __Logs:__ Stream Analytics Log provides details about each job you rub.
+    - __Dashboards:__ mostram métricas chaves para o Stream Analytics Jobs;
+    - __Diagnostic Logs:__ parte chave da infra estrutura operacional. Ajuda a encontrar a causa raiz dos problemas de deploy em produção;
       - Desabilitado por default;
-    - 
-    
-    
   - Data Ingestion:
     By configuring data inputs from first-class integration sources, these sources include:
     - __Event Hubs, Azure IOT Hub and Azure Blob__
     - IoT Hub: enrich relationship between your devices and your back-end systems.
     - Event-hubs: Provides big-data streaming services. Designed for high data throughput, allowing customers to send billions of requests per day. Uses a partitioned consumer model to scale out your data stream. Authentication through a shared key.
-  - __Data Processing__
-  Set up jobs with input and output pipelines.
-    - Inputs are provided by Events Hubs, IoT Hubs or Azure Storage. The output can be route to many storage systems. Include Blob, SQL Database, Data Lake Storage, and cosmos DB.
-    - After Stored, batch analytics in HdInsight, or send the output to a service like Event Hubs for consumption. Or PBI Streaming API.
+
   - __Queries__: Stream Analyticss Query Language, consistent with SQL.
   - __Data Security__:
     - At the transport layer between device and IoT Hub.
