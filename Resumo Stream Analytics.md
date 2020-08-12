@@ -1,4 +1,4 @@
-#### Stream Analytics
+### Stream Analytics
   Process streaming data and respond to data anomalies in real time.
   Integra seus aplicativos e dispositivos IoT a um mecanismo de análise por streaming para obter insights com os dados de streaming em tempo real.
   - Detecta problemas ou reconhece e os responde;
@@ -15,8 +15,13 @@
   - __Event Ingest System:__ Obtém o dado do sistema fonte e passa por uma Analytics engine 
   - __Stream Analytics Engine__: o processamento é executado sob o fluxo de dados recebidos e as infos são extraídas. O stream Analytics expõem a linguagem de consulta SAQL, um conjunto do Transact-SQL personalizado para executar calculos sobre os dados de streaming;
     - __Event Process__: Engine que consome os dados do stream e entrega insights. Pode processar um evento por vez, ou vários (ex: pedágio)
-  - __Event Consumer__: Aplicação que consome dados e toma ações específicas baseadas nos insights;
-###- __Data Processing__
+  - __Event Consumer__: Aplicação que consome dados e toma ações específicas baseadas nos insights;  
+- ### Data Ingestion:
+    By configuring data inputs from first-class integration sources, these sources include:
+    - __Event Hubs, Azure IOT Hub and Azure Blob__
+    - IoT Hub: enrich relationship between your devices and your back-end systems.
+    - Event-hubs: Provides big-data streaming services. Designed for high data throughput, allowing customers to send billions of requests per day. Uses a partitioned consumer model to scale out your data stream. Authentication through a shared key.
+- ### Data Processing:
   Set up jobs with input and output pipelines.
     - Inputs are provided by Events Hubs, IoT Hubs or Azure Storage. The output can be route to many storage systems. Include Blob, SQL Database, Data Lake Storage, and cosmos DB.
     - After Stored, batch analytics in HdInsight, or send the output to a service like Event Hubs for consumption. Or PBI Streaming API.
@@ -34,13 +39,24 @@
     - __Dashboards:__ mostram métricas chaves para o Stream Analytics Jobs;
     - __Diagnostic Logs:__ parte chave da infra estrutura operacional. Ajuda a encontrar a causa raiz dos problemas de deploy em produção;
       - Desabilitado por default;
-  - Data Ingestion:
-    By configuring data inputs from first-class integration sources, these sources include:
-    - __Event Hubs, Azure IOT Hub and Azure Blob__
-    - IoT Hub: enrich relationship between your devices and your back-end systems.
-    - Event-hubs: Provides big-data streaming services. Designed for high data throughput, allowing customers to send billions of requests per day. Uses a partitioned consumer model to scale out your data stream. Authentication through a shared key.
-
+  
   - __Queries__: Stream Analyticss Query Language, consistent with SQL.
   - __Data Security__:
     - At the transport layer between device and IoT Hub.
     - Event Hubs uses a shared key to secure the data transfer.
+- #### __Monitoring__
+  - Jobs can monitored using.
+    - Azure portal
+    - PoserShell
+    - .NET SDK
+    - Visual Studio
+  - Metrics Available for monitoring:
+    - 4 Scenarios:
+      - SU % utilization (stream units)
+      - Runtime errors
+      - Watermark delay (se uma base faltar, por ex)
+      - Input Deserialization error (erro no código)
+    - Setting up int the portal:
+      - Alerts can be configured in the Portal on the job Page
+      - Alerts are configured by job
+      - Notifications are customizable
