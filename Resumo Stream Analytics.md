@@ -60,3 +60,18 @@
       - Alerts can be configured in the Portal on the job Page
       - Alerts are configured by job
       - Notifications are customizable
+- ### Optimize
+  - Stream Units:
+    - Computing resources allocated to your job
+    - Capacity is key
+    - Review SU% metric
+      - 80% should be the redline
+    - Start with 6 SUs for queires not using PARTITION BY
+  - Paralelization:
+    - Partitioning is key for optimization
+      - inputs are already partitioned
+      - outputs need to partitioned
+    - Events should go to the same partition of your input
+    - PARTITION BY should always be used in all steps
+    - Input partition must equal output partition
+    
