@@ -45,8 +45,8 @@
         - Can be modeled and then finally pushed through either predictive APPs or some sort of reporting;
       - Model and Serve
     - __Terminology__
-      - Cluster
-      - Workspace - Filling cabinet (armário de arquivos)
+      - __Cluster__
+      - __Workspace - Filling cabinet (armário de arquivos)__
         - __Notebooks__ - Dentro do armário de arquivos você tem os notebooks: pastas
           - __Cells:__ Estão dentro dos notebooks e são pequenos pedaços d código usados para executar comandos;
         - __Libraries__: pacotes ou módulos que provêem funcionalidades adicionais
