@@ -21,21 +21,21 @@
       - Set of executors process
         - Are responsible for actually executing the work that's being assigned to them by the driver process
         - Respond back to the driver node
-      - Cluster Manager
+      - __Cluster Manager__
         - Controla as máquinas físicas
         - Aloca diferentes recursos para as aplicações
       - Pode haver multiplas atividades operando em um cluster individual. Trabalha muito parecido com um Elastic Pool
       - *RDD* Resilient Distributed Datasets (RDD): Fundamental Data Structure of Spark
         - Resilient: Fault Tolerant
-        - Distributed: data resides on multiples nodes
-        - Dataset: the data you work with
+        - __Distributed:__ data resides on multiples nodes
+        - __Dataset:__ the data you work with
       - Transformations and Actions:
         - Lazy Evaluations: transformações "lazy and nature"
           - quando você chama uma operação em RDD, ela não executa imediatamente. A transformação só é executada quando é necessária
           - As transformações são executadas apenas quando o driver requisita a informação
           - Highly efficient and streamlined manner
     - __Databricks__
-      - Ingest:
+      - __Ingest__:
         - Datta Factory - data movement, pipelines and orchestration tools
         - Kafka
         - IoT Hubs
@@ -47,10 +47,10 @@
     - __Terminology__
       - Cluster
       - Workspace - Filling cabinet (armário de arquivos)
-        - Notebooks - Dentro do armário de arquivos você tem os notebooks: pastas
-          - Cells: Estão dentro dos notebooks e são pequenos pedaços d código usados para executar comandos;
-        - Libraries: pacotes ou módulos que provêem funcionalidades adicionais
-        - Tables: Where structured data is stored
+        - __Notebooks__ - Dentro do armário de arquivos você tem os notebooks: pastas
+          - __Cells:__ Estão dentro dos notebooks e são pequenos pedaços d código usados para executar comandos;
+        - __Libraries__: pacotes ou módulos que provêem funcionalidades adicionais
+        - __Tables__: Where structured data is stored
       - __Key Features__
         - An interactive workspace for exploration and visualization
         - Core API: R, SQL, Python, Scala and Java
