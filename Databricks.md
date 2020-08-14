@@ -1,0 +1,59 @@
+### Apache Spark
+
+  - Open source distributed general purpose cluster computing framework
+  - Usado para transformar dados de um estado para o outro
+  - Pode ser usado para batch ou streaming
+  - Construído para necessidade de rapidez e anaytics sofisticado
+  - __Características__
+    - Speed: 100x mais rápido que o mapreduce in memory
+    - 10 x mais rápido em disco
+    - Easy of use
+    - Flexibility: Java, Scala, Python, SQL
+  - __Spark Applications__:
+    - Driver process
+      - É tipo um cerébro e gerencia tudo e envia informações através dos executors;
+      - Execute program commands;
+      - In one node in your cluster
+      - Responsável por:
+        - maintaining informations about the App
+        - Responder aos inputs (quando você com o sistema, interage com um driver)
+        - Analyzes, distributes and schedules work across the executors
+      - Set of executors process
+        - Are responsible for actually executing the work that's being assigned to them by the driver process
+        - Respond back to the driver node
+      - Cluster Manager
+        - Controla as máquinas físicas
+        - Aloca diferentes recursos para as aplicações
+      - Pode haver multiplas atividades operando em um cluster individual. Trabalha muito parecido com um Elastic Pool
+      - *RDD* Resilient Distributed Datasets (RDD): Fundamental Data Structure of Spark
+        - Resilient: Fault Tolerant
+        - Distributed: data resides on multiples nodes
+        - Dataset: the data you work with
+      - Transformations and Actions:
+        - Lazy Evaluations: transformações "lazy and nature"
+          - quando você chama uma operação em RDD, ela não executa imediatamente. A transformação só é executada quando é necessária
+          - As transformações são executadas apenas quando o driver requisita a informação
+          - Highly efficient and streamlined manner
+    - __Databricks__
+      - Ingest:
+        - Datta Factory - data movement, pipelines and orchestration tools
+        - Kafka
+        - IoT Hubs
+      - Store: DW, SQL, Data Lake...
+      - Prep and Train: Databricks - transformaton tool set, primarily works to clean and transform data to get into a usable tool set.
+        - Also useful for machine learning
+        - Can be modeled and then finally pushed through either predictive APPs or some sort of reporting;
+      - Model and Serve
+    - __Terminology__
+      - Cluster
+      - Workspace - Filling cabinet (armário de arquivos)
+        - Notebooks - Dentro do armário de arquivos você tem os notebooks: pastas
+          - Cells: Estão dentro dos notebooks e são pequenos pedaços d código usados para executar comandos;
+        - Libraries: pacotes ou módulos que provêem funcionalidades adicionais
+        - Tables: Where structured data is stored
+      - __Key Features__
+        - An interactive workspace for exploration and visualization
+        - Core API: R, SQL, Python, Scala and Java
+        - Streaming (HDFS, Flume, Kafka and batch processing)
+        - Dynamic Scaling and secure integration
+        
