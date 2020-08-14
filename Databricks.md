@@ -26,7 +26,7 @@
         - Aloca diferentes recursos para as aplicações
       - Pode haver multiplas atividades operando em um cluster individual. Trabalha muito parecido com um Elastic Pool
       - *RDD* Resilient Distributed Datasets (RDD): Fundamental Data Structure of Spark
-        - Resilient: Fault Tolerant
+        - __Resilient__: Fault Tolerant
         - __Distributed:__ data resides on multiples nodes
         - __Dataset:__ the data you work with
       - Transformations and Actions:
@@ -39,8 +39,8 @@
         - Datta Factory - data movement, pipelines and orchestration tools
         - Kafka
         - IoT Hubs
-      - Store: DW, SQL, Data Lake...
-      - Prep and Train: Databricks - transformaton tool set, primarily works to clean and transform data to get into a usable tool set.
+      - __Store:__ DW, SQL, Data Lake...
+      - __Prep and Train:__ Databricks - transformaton tool set, primarily works to clean and transform data to get into a usable tool set.
         - Also useful for machine learning
         - Can be modeled and then finally pushed through either predictive APPs or some sort of reporting;
       - Model and Serve
