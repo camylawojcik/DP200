@@ -56,4 +56,19 @@
         - Core API: R, SQL, Python, Scala and Java
         - Streaming (HDFS, Flume, Kafka and batch processing)
         - Dynamic Scaling and secure integration
-        
+### Monitoring in Azure Databricks
+  - __Ganglia Monitoring System__
+    - Scalable distributed monitoring system built into Databricks by default;
+    - Default collection every 15 minutes;
+    - Can view snapshot or live data
+  - __Azure Monitor__
+    - Describe as the "best" solution for managing log data
+    - No native support for sending log data
+      - Install Dropwizard metrics library
+        - Library enables functionality available in github;
+    - Utilize Grafana Dashboards
+      - Open-source visualization platform
+        - 3 steps required
+          - Install dropwizard metrics library in Databricks
+          - Configure Azure log analytics workspace
+          - Deploy and configure Grafana
